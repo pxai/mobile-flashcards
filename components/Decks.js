@@ -1,12 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { data } from './data.js'
+import Deck from './Deck'
 
+//const decks = data;
 
 export default class Decks extends React.Component {
   render() {
+      const decks = data;
     return (
       <View >
-       <Text> This are decks madafaka</Text>
+       (
+           decks.map((deck) =>
+           {
+               <Deck />
+           })
+       )
       </View>
     );
   }
