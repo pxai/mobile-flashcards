@@ -6,8 +6,8 @@ export default class Deck extends React.Component {
   render() {
     return (
       <View >
-       <Text><h2>a</h2></Text>
-       <Text>b cards</Text>
+       <Text>{this.props.deck.title}</Text>
+       <Text>{this.props.deck.questions.length} cards</Text>
       </View>
     );
   }

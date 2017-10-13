@@ -18,6 +18,18 @@ And then:
 yarn install
 ```
 
+### Launch android emulator
+Install Android Studio or just the SDK Tools.
+Then
+```
+/home/pello/Android/Sdk/tools/emulator -avd Nexus_5X_API_26_x86
+```
+
+To list existing devices
+```
+/home/pello/Android/Sdk/tools/emulator -list-avds
+```
+
 ### Start
 ```
  yarn start
