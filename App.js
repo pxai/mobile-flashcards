@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
+import DeckDetail from './components/DeckDetail'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 
@@ -24,11 +25,20 @@ const Tabs = TabNavigator({
 
 });
 
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  DeckDetail: {
+    screen: DeckDetail
+  }
+});
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <Tabs />
+        <MainNavigator />
       </View>
     );
   }
