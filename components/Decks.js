@@ -34,9 +34,14 @@ export default class Decks extends React.Component {
 const styles = StyleSheet.create({
   decks: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomColor: '#eee'
+    justifyContent: 'flex-start',
+    borderBottomColor: '#eee' ,
+    alignItems: 'stretch'
+  },
+  box: {
+    height: 50,
+    width: 50,
+    backgroundColor: '#e76e63',
+    margin: 10,
   }
 });
