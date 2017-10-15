@@ -37,11 +37,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     borderBottomColor: '#eee' ,
     alignItems: 'stretch'
-  },
-  box: {
-    height: 50,
-    width: 50,
-    backgroundColor: '#e76e63',
-    margin: 10,
   }
 });

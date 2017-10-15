@@ -20,7 +20,7 @@ export default class Deck extends React.Component {
 
 const styles = StyleSheet.create({
   deck: {
-    borderBottomWidth: 1,
+    borderTopWidth: 1,
     textAlign: 'center',
     height: 250,
     marginLeft: 1,

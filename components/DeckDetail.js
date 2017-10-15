@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import data  from './data.js'
+import Deck from './Deck';
+import TextButton from './TextButton';
 
 export default class DeckDetail extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -8,13 +10,28 @@ export default class DeckDetail extends React.Component {
   
    // setState({deck: data[deckId]})
   }
+  addCard = () => {
+    console.log('Button add was pressed');
+  }
+  startQuiz = () => {
+    console.log('Button start was pressed');
+  }
   render() {
    const deck = data[this.props.navigation.state.params.deckId];
    console.log('State: ', deck);
     return (
       <View style={styles.deck}>
-        <View><Text>{deck.title}</Text></View>
-        <View><Text>So many cards</Text></View>
+        <Deck deck={deck} />
+        <View style={styles.box}>        
+          <TextButton style={styles.addButton} onPress={this.addCard}>
+            Add Card
+          </TextButton>
+        </View>
+        <View style={styles.box}>   
+          <TextButton style={styles.startButton} onPress={this.startQuiz}>
+            Start Quiz
+          </TextButton>
+        </View>
       </View>
     );
   }
@@ -32,10 +49,31 @@ function mapStateToProps (state, { navigation }) {
 
 const styles = StyleSheet.create({
   deck: {
-    borderBottomWidth: 2,
-    height: 200,
+    flex: 1,
     width: '100%',
     marginLeft: 1,
     marginRight: 1,
+  },
+  box: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  addButton: {
+    textAlign: 'center',
+    margin: 2,
+    padding: 4,
+    borderWidth: 1,
+    borderColor: '#000',
+    width: 150
+  },
+  startButton: {
+    textAlign: 'center',
+    margin: 2,
+    padding: 4,
+    borderWidth: 1,
+    borderColor: '#000',
+    width: 150,
+    backgroundColor: '#000',
+    color: '#fff'
   }
 });
