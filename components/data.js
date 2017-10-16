@@ -1,7 +1,7 @@
  const data = [
     {
         id: 0,
-        title: 'React',
+        title: 'Français',
         questions: [
           {
             question: 'What is React?',
@@ -15,7 +15,7 @@
     },
     {
         id: 1,
-        title: 'JavaScript',
+        title: 'English',
         questions: [
           {
             question: 'What is a closure?',
@@ -25,7 +25,7 @@
     },
     {
         id: 2,
-        title: 'Spring',
+        title: 'Español',
         questions: [
           {
             question: 'What is Spring',

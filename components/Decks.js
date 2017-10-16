@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import data  from './data.js'
 import Deck from './Deck'
@@ -6,9 +7,9 @@ import DeckDetail from './DeckDetail'
 
 //const decks = data;
 
-export default class Decks extends React.Component {
+class Decks extends React.Component {
   render() {
-      const decks = data;
+      const decks = this.props.decks;
     return (
       <View style={styles.decks}>
           {decks.map((deck) =>
@@ -39,3 +40,19 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   }
 });
+
+function mapStateToProps (state, { navigation }) {
+  return {
+    decks: state.data,
+  }
+}
+
+function mapDispatchToProps (dispatch, { navigation }) {
+  return {
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Decks)

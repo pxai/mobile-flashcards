@@ -8,7 +8,7 @@ function decks (state = {data}, action) {
         ...state,
         ...action.decks,
       }
-    case ADD_ENTRY :
+    case ADD_DECK :
       return {
         ...state,
         ...action.deck
