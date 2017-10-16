@@ -14,6 +14,22 @@
         ]
     },
     {
+      id: 1,
+      title: 'English',
+      questions: [
+        {
+          question: 'What is a closure?',
+          answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        }
+      ]
+  }
+];
+
+
+export default data;
+
+/*
+    {
         id: 1,
         title: 'English',
         questions: [
@@ -40,9 +56,4 @@
             answer: 'Something that Homer users'
           }
         ]
-    }
-
-];
-
-
-export default data;
+    }*/

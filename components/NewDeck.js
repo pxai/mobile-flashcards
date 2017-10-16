@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { addDeck } from '../actions'
+import { getDecks } from '../api'
 import TextButton from './TextButton'
 
 
@@ -11,7 +13,14 @@ class NewDeck extends React.Component {
   }
 
   addDeck = () => {
-    console.log('Adding Deck', this.state.deckName);
+
+    let newDeck = {
+      id: Math.round(Math.random()*100),
+      title: this.state.deckName,
+      questions: []
+    };
+    console.log('Adding Deck', newDeck);
+    this.props.addDeck(newDeck);
   };
 
   render() {
@@ -61,6 +70,8 @@ function mapStateToProps (state, { navigation }) {
 
 function mapDispatchToProps (dispatch, { navigation }) {
   return {
+    addDeck: (deck) => dispatch(addDeck(deck)),
+    goBack: () => navigation.goBack()
   }
 }
 

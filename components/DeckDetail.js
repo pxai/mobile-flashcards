@@ -84,10 +84,11 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state, { navigation }) {
   const { deckId } = navigation.state.params
-
+  console.log('Loading this deck: ', deckId);
   return {
+    navigation,
     deckId,
-    deck: state.data[deckId],
+    deck: state.decks[deckId],
   }
 }
 

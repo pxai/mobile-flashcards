@@ -1,12 +1,17 @@
-import { RECEIVE_DECKS, ADD_DECK } from '../actions'
+import { GET_DECKS, ADD_DECK } from '../actions'
 import data from '../components/data'
 
-function decks (state = {data}, action) {
+const initialDecksState = {
+  decks: data
+};
+
+function decks (state = initialDecksState, action) {
   switch (action.type) {
-    case RECEIVE_DECKS :
+    case GET_DECKS:
+    console.log('Getting decks: ', action.decks.json());
       return {
         ...state,
-        ...action.decks,
+        ...action.decks.json(),
       }
     case ADD_DECK :
       return {

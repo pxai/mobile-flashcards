@@ -1,11 +1,22 @@
-export const RECEIVE_DECKS = 'RECEIVE_DECKS'
+import  Deck   from '../api';
+
+export const GET_DECKS = 'GET_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 
-export function receiveEntries (entries) {
+
+export function getDecks (decks) {
+  console.log('Calling to reducer... ', decks);
   return {
-    type: RECEIVE_DECKS,
-    decks,
+    type: GET_DECKS,
+    decks
   }
+}
+
+export function getDecksAsync() {
+  console.log('Calling getDecksAsync...');
+  return dispatch => (
+      Deck.getDecks().then(decks => dispatch(getDecks( decks)))
+  )
 }
 
 export function addDeck (deck) {

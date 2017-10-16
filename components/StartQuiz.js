@@ -21,7 +21,7 @@ function mapStateToProps (state, { navigation }) {
 
   return {
     deckId,
-    deck: state.data[deckId],
+    deck: state.decks[deckId],
   }
 }
 
