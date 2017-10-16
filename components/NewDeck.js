@@ -5,8 +5,13 @@ import TextButton from './TextButton'
 
 
 class NewDeck extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { deckName: '' };
+  }
+
   addDeck = () => {
-    console.log('Adding Deck');
+    console.log('Adding Deck', this.state.deckName);
   };
 
   render() {
@@ -14,10 +19,13 @@ class NewDeck extends React.Component {
       <View style={styles.deck}>
        <View style={styles.box}><Text>Add new Deck</Text></View>
        <View style={styles.box}>
-         <TextInput  />
+         <TextInput maxLength={40} 
+         onChangeText={(deckName) => this.setState({deckName})}
+         value={this.state.deckName} />
        </View>
        <View style={styles.box}>
-       <TextButton style={styles.default} onPress={this.addDeck}>
+       <TextButton style={styles.default} 
+       onPress={this.addDeck}>
             Add Deck
         </TextButton>
       </View>
