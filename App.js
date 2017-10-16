@@ -7,6 +7,8 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
+import NewCard from './components/NewCard'
+import StartQuiz from './components/StartQuiz'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 
@@ -34,6 +36,12 @@ const MainNavigator = StackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail
+  },
+  StartQuiz: {
+    screen: StartQuiz
+  },
+  NewCard: {
+    screen: NewCard
   }
 });
 

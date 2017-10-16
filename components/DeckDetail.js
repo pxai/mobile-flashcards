@@ -1,24 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native';
-import data  from './data.js'
 import Deck from './Deck';
 import TextButton from './TextButton';
 
-export default class DeckDetail extends React.Component {
+class DeckDetail extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { deckId } = navigation.state.params
   
    // setState({deck: data[deckId]})
   }
   addCard = () => {
-    console.log('Button add was pressed');
+    console.log('Button add was pressed', this.props.deckId );
+    this.props.navigation.navigate(
+      'NewCard',
+      { deckId: this.props.deckId }
+    )
   }
   startQuiz = () => {
-    console.log('Button start was pressed');
+    console.log('Button start was pressed',  this.props.deckId );
+    this.props.navigation.navigate(
+      'StartQuiz',
+      { deckId: this.props.deckId }
+    )
   }
   render() {
-   const deck = data[this.props.navigation.state.params.deckId];
-   console.log('State: ', deck);
+   // Other option to access param:
+   // this.props.navigation.state.params.deckId;
+   
+   const deck = this.props.deck; 
+   console.log('Detail deck: ', this.props.deckId);
     return (
       <View style={styles.deck}>
         <Deck deck={deck} />
@@ -37,14 +48,7 @@ export default class DeckDetail extends React.Component {
   }
 }
 
-function mapStateToProps (state, { navigation }) {
-  const { deckId } = navigation.state.params
 
-  return {
-    deckId,
-    deck: data[deckId],
-  }
-}
 
 
 const styles = StyleSheet.create({
@@ -77,3 +81,22 @@ const styles = StyleSheet.create({
     color: '#fff'
   }
 });
+
+function mapStateToProps (state, { navigation }) {
+  const { deckId } = navigation.state.params
+
+  return {
+    deckId,
+    deck: state.data[deckId],
+  }
+}
+
+function mapDispatchToProps (dispatch, { navigation }) {
+  return {
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DeckDetail)
