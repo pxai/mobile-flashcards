@@ -22,6 +22,14 @@ export function getDecksAsync() {
 export function addDeck (deck) {
   return {
     type: ADD_DECK,
-    deck,
+    deck
   }
+}
+
+export function addDeckAsync (deck) {
+  console.log('Calling addDeckAsync...', deck);
+  return dispatch => (
+      //Deck.addDeck({deck, id:"decks"}).then(deck => dispatch(addDeck( deck)))
+      dispatch(addDeck(Deck.addDeck({deck, id:"decks"})))
+  )
 }

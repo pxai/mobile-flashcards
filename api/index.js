@@ -15,13 +15,19 @@ const Deck = function () {
     return AsyncStorage.getItem(DECKS_STORAGE_KEY);
   }
   
-  
-/*
  this.addDeck = function ({ deck, key }) {
-  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
+   console.log('API> Action add deck and key', deck, key);
+ /* return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
     [key]: deck
-  }))
- }*/
+  }));
+*/
+       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data),  () => { 
+            AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck), () => { 
+                AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => { console.log(result); }); 
+              }); 
+          });
+          return deck;
+ }
 
 }
 

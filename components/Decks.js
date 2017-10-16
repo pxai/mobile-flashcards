@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { getDecksAsync } from '../actions'
 import data  from './data.js'
 import Deck from './Deck'
@@ -17,7 +17,7 @@ class Decks extends React.Component {
   render() {
       const decks = this.props.decks;
     return (
-      <View style={styles.decks}>
+      <ScrollView style={styles.decks}>
           {decks.map((deck) =>
            {
             return (
@@ -33,7 +33,7 @@ class Decks extends React.Component {
               )
            }
        )}
-      </View>
+      </ScrollView>
     );
   }
 }

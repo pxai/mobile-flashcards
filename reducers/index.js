@@ -14,9 +14,10 @@ function decks (state = initialDecksState, action) {
         ...action.decks.json(),
       }
     case ADD_DECK :
+    console.log('Reducer> Adding deck: ', action);
       return {
         ...state,
-        ...action.deck
+        decks: [...state.decks, action.deck]
       }
     default :
       return state
