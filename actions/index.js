@@ -3,6 +3,7 @@ import  Deck   from '../api';
 export const GET_DECKS = 'GET_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 
+Deck.initStorage();
 
 export function getDecks (decks) {
   console.log('Calling to reducer... ', decks);
@@ -28,8 +29,11 @@ export function addDeck (deck) {
 
 export function addDeckAsync (deck) {
   console.log('Calling addDeckAsync...', deck);
-  return dispatch => (
+  Deck.getDecks().then(decks => console.log('JODER: ', decks));
+  
+  /*return dispatch => (
+    addDeck(deck)
       //Deck.addDeck({deck, id:"decks"}).then(deck => dispatch(addDeck( deck)))
-      dispatch(addDeck(Deck.addDeck({deck, id:"decks"})))
-  )
+      //Deck.addDeck({key: deck.id, entry: { id: deck.id, title: deck.title, questions: [] } }).then(addDeck(deck))
+  )*/
 }

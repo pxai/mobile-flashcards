@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { addDeckAsync } from '../actions'
+import { addDeck } from '../actions'
 import { getDecks } from '../api'
 import TextButton from './TextButton'
 
@@ -76,7 +76,7 @@ function mapStateToProps (state, { navigation }) {
 
 function mapDispatchToProps (dispatch, { navigation }) {
   return {
-    addDeck: (deck) => dispatch(addDeckAsync(deck)),
+    addDeck: (deck) => dispatch(addDeck(deck)),
     goBack: () => navigation.goBack()
   }
 }
