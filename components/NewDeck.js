@@ -21,6 +21,12 @@ class NewDeck extends React.Component {
     };
     console.log('Adding Deck', newDeck);
     this.props.addDeck(newDeck);
+    this.props.navigation.navigate(
+      'DeckDetail',
+      { deckId: newDeck.id }
+    )
+    console.log('Ok, detail was logged!!!');
+
   };
 
   render() {

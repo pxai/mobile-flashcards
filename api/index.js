@@ -21,11 +21,12 @@ const Deck = function () {
     [key]: deck
   }));
 */
-       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data),  () => { 
+       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(deck),  () => { 
             AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck), () => { 
                 AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => { console.log(result); }); 
               }); 
           });
+          
           return deck;
  }
 
