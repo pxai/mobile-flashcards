@@ -18,6 +18,7 @@ class StartQuiz extends React.Component {
 
 function mapStateToProps (state, { navigation }) {
   const { deckId } = navigation.state.params
+  console.log('StartQuiz> ', state.decks)
 
   return {
     deckId,

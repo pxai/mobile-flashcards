@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state, { navigation }) {
   const { deckId } = navigation.state.params
-  console.log('Loading this deck: ', deckId);
+  console.log('Loading this deck: ', state.decks);
   return {
     navigation,
     deckId,
@@ -94,6 +94,8 @@ function mapStateToProps (state, { navigation }) {
 
 function mapDispatchToProps (dispatch, { navigation }) {
   return {
+    addCard: (card) => dispatch(addCard(card)),
+    goBack: () => navigation.goBack()
   }
 }
 

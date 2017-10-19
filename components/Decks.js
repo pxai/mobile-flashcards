@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps (state, { navigation }) {
+  console.log('Loading this deck: ', state.decks);
   return {
     decks: state.decks,
   }
