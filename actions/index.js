@@ -1,5 +1,5 @@
 
-
+import  DeckStorage   from '../flashcard';
 export const GET_DECKS = 'GET_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
@@ -13,9 +13,8 @@ export function getDecks (decks) {
 }
 
 export function getDecksAsync() {
-  console.log('Calling getDecksAsync...');
   return dispatch => (
-      Deck.getDecks().then(decks => dispatch(getDecks( decks)))
+    DeckStorage.getDecks().then(decks => dispatch(getDecks( decks)))
   )
 }
 

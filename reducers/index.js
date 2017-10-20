@@ -19,6 +19,7 @@ function decks (state = initialDecksState, action) {
         ...action.decks,
       }
     case ADD_DECK :
+     DeckStorage.addDeck({key: action.deckTitle, entry: {title: action.deckTitle, questions: []}});
       console.log('Reducer> Adding deck: []]]', action.deckTitle);
         return { decks: {
           ...state.decks,
