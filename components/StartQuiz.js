@@ -61,17 +61,34 @@ class StartQuiz extends React.Component {
     console.log('Changed state: ', this.state);
     return (
       <View style={styles.deck}>
-        <View style={styles.scoreBox}> 
-          <Text style={styles.question}>
-            {this.state.correct}/{deck.questions.length}
-            </Text>
-        </View>
+
 
         {this.state.finished ?
          (
-            <View><Text>epa</Text></View>
+           <View>
+           <View style={styles.scoreBox}> 
+              <Text style={styles.question}>
+              {this.state.correct}/{deck.questions.length}
+              </Text>
+           </View>
+            <View style={styles.box}>        
+            <TextButton style={styles.correctButton} onPress={() => this.props.goBack()}>
+              BACK TO DECK
+            </TextButton>
+          </View>
+            <View style={styles.box}>   
+            <TextButton style={styles.incorrectButton} onPress={() => this.reset()}>
+            RESET QUIZ
+            </TextButton>
+          </View>
+          </View>
          ) : (
           <View>
+          <View style={styles.scoreBox}> 
+              <Text style={styles.question}>
+              {this.state.correct}/{deck.questions.length}
+              </Text>
+           </View>
           <View style={styles.box}> 
           <Text style={styles.question}>
             {this.state.showAnwser ?
@@ -165,7 +182,8 @@ function mapStateToProps (state, { navigation }) {
 }
 
 function mapDispatchToProps (dispatch, { navigation }) {
-  return {
+return {
+    goBack: () => navigation.goBack()
   }
 }
 
