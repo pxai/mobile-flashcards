@@ -1,10 +1,8 @@
-import  Deck   from '../api';
+
 
 export const GET_DECKS = 'GET_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
-
-Deck.initStorage();
 
 export function getDecks (decks) {
   console.log('Calling to reducer... ', decks);

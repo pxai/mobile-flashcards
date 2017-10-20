@@ -1,5 +1,9 @@
 import { GET_DECKS, ADD_DECK, ADD_CARD } from '../actions'
 import data from '../components/data'
+import  DeckStorage   from '../flashcard';
+
+DeckStorage.initStorage();
+
 
 const initialDecksState = {
   decks: data

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Deck from './Deck';
 import TextButton from './TextButton';
 
+
 class DeckDetail extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { deckId } = navigation.state.params

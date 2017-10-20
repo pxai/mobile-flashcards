@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, TextInput } from 'react-native';
 import { addDeck } from '../actions'
-import { getDecks } from '../api'
 import TextButton from './TextButton'
-
 
 class NewDeck extends React.Component {
   constructor(props) {
@@ -28,7 +26,7 @@ class NewDeck extends React.Component {
       <View style={styles.deck}>
        <View style={styles.box}><Text>Add new Deck</Text></View>
        <View style={styles.box}>
-         <TextInput maxLength={40} 
+         <TextInput style={styles.textInput} maxLength={40} 
          onChangeText={(deckName) => this.setState({deckName})}
          value={this.state.deckName} />
        </View>
@@ -42,6 +40,8 @@ class NewDeck extends React.Component {
     );
   }
 }
+
+const { width } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   deck: {
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#aaa',
     padding: 4
+  },
+  textInput: {
+    width: width - 10
   }
 })
 

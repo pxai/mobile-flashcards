@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View , TextInput} from 'react-native';
+import { Dimensions, StyleSheet, Text, View , TextInput} from 'react-native';
 import { addCard } from '../actions'
 import TextButton from './TextButton'
+
+
 
 class NewCard extends React.Component {
   constructor(props) {
@@ -31,14 +33,14 @@ class NewCard extends React.Component {
 
       <View style={styles.box}>
         <Text>Question</Text>
-        <TextInput maxLength={40} 
+        <TextInput style={styles.textInput} maxLength={40} 
         onChangeText={(question) => this.setState({question})}
         value={this.state.question} />
       </View>
 
       <View style={styles.box}>
         <Text>Answer</Text>
-        <TextInput maxLength={40} 
+        <TextInput style={styles.textInput} maxLength={40} 
         onChangeText={(answer) => this.setState({answer})}
         value={this.state.answer} />
       </View>
@@ -54,6 +56,8 @@ class NewCard extends React.Component {
   }
 }
 
+const { width } = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   deck: {
     flex: 1,
@@ -67,10 +71,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   default: {
+    width: width - 40,
     textAlign: 'center',
     color: 'white',
     backgroundColor: '#aaa',
     padding: 4
+  },
+  textInput: {
+    width: width - 10
   }
 })
 

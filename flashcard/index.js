@@ -9,7 +9,7 @@ export const DECKS_STORAGE_KEY = '@UdaciCards:deck'
   console.log('Could not set AsyncStorage: ', error);
 }*/
 
-const Deck = function () {
+const DeckStorage = function () {
 
  this.getDecks = function () {
     return AsyncStorage.getItem(DECKS_STORAGE_KEY);
@@ -37,4 +37,4 @@ const Deck = function () {
 }
 
 
-export default new Deck();
+export default new DeckStorage();
