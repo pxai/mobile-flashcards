@@ -11,6 +11,7 @@ import NewCard from './components/NewCard'
 import StartQuiz from './components/StartQuiz'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import thunk from 'redux-thunk';
+import setReminderNotification from './notifications'
 
 /*const logger = store => next => action => {
   console.group(action.type)
@@ -62,6 +63,10 @@ const MainNavigator = StackNavigator({
 });
 
 export default class App extends React.Component {
+  componentDidMount() {
+    //setReminderNotification()
+  }
+
   render() {
     return (
       <Provider store={store}>

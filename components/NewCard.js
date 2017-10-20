@@ -14,7 +14,8 @@ class NewCard extends React.Component {
     
         let newCard = {
           question: this.state.question,
-          answer: this.state.answer
+          answer: this.state.answer,
+          correct: null
         };
         console.log('Adding card', newCard);
         this.props.addCard( this.props.deck.id , newCard);
