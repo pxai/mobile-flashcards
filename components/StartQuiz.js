@@ -7,7 +7,7 @@ import TextButton from './TextButton';
 class StartQuiz extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { current: 0, correct: 0, showAnwser: false, finished: false };
+    this.state = { current: 0, correct: 0, showAnswer: false, finished: false };
   }
 
   answer = (userAnswer) => {
@@ -27,32 +27,23 @@ class StartQuiz extends React.Component {
   }
 
   toggleAnswer = () => {
-    let flag = !this.state.showAnwser;
-    console.log('Show answer: ' , flag, this.state.showAnwser);
-
     this.setState(function(prevState) {
       return {
         showAnswer: !prevState.showAnswer
       };
     });
-
   }
 
   next = () => {
     let {current, correct, finished } = this.state;
     if (current === this.props.deck.questions.length - 1) {
       this.setState({finished: true})
-      this.showResult();
     } else {
       this.setState({ current: current + 1});
     }
   }
 
-  showResult = () => {
-   // this.setState({ current: 0, correct: 0, showAnswer: false, finished: false });
-  }
-
-  reset = () => {
+  resetQuiz = () => {
     this.setState({ current: 0, correct: 0, showAnswer: false, finished: false });
   }
 
@@ -68,7 +59,7 @@ class StartQuiz extends React.Component {
            <View>
            <View style={styles.scoreBox}> 
               <Text style={styles.question}>
-              {this.state.correct}/{deck.questions.length}
+              {(this.state.correct/deck.questions.length)*100}%
               </Text>
            </View>
             <View style={styles.box}>        
@@ -77,7 +68,7 @@ class StartQuiz extends React.Component {
             </TextButton>
           </View>
             <View style={styles.box}>   
-            <TextButton style={styles.incorrectButton} onPress={() => this.reset()}>
+            <TextButton style={styles.incorrectButton} onPress={() => this.resetQuiz()}>
             RESET QUIZ
             </TextButton>
           </View>
@@ -91,7 +82,7 @@ class StartQuiz extends React.Component {
            </View>
           <View style={styles.box}> 
           <Text style={styles.question}>
-            {this.state.showAnwser ?
+            {this.state.showAnswer ?
               ( 
                 deck.questions[this.state.current].answer
               ) : (
