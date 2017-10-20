@@ -18,17 +18,17 @@ class Decks extends React.Component {
       const decks = this.props.decks;
     return (
       <ScrollView style={styles.decks}>
-          {decks.map((deck) =>
+          {Object.keys(decks).map((key, index) =>
            {
             return (
               <TouchableOpacity
                 onPress={() => 
                 this.props.navigation.navigate(
                   'DeckDetail',
-                  { deckId: deck.id }
+                  { deckId: key }
                 )}
               >
-               <Deck key={deck.title} deck={deck} />
+               <Deck key={decks[key].title} deck={decks[key]} />
               </TouchableOpacity>
               )
            }

@@ -13,17 +13,11 @@ class NewDeck extends React.Component {
   }
 
   addDeck = () => {
-
-    let newDeck = {
-      id: Math.round(Math.random()*100),
-      title: this.state.deckName,
-      questions: []
-    };
-    console.log('Adding Deck', newDeck);
-    this.props.addDeck(newDeck);
+    console.log('Adding Deck', this.state.deckName);
+    this.props.addDeck(this.state.deckName);
     this.props.navigation.navigate(
       'DeckDetail',
-      { deckId: newDeck.id }
+      { deckId: this.state.deckName }
     )
     console.log('Ok, detail was logged!!!');
 
@@ -76,7 +70,7 @@ function mapStateToProps (state, { navigation }) {
 
 function mapDispatchToProps (dispatch, { navigation }) {
   return {
-    addDeck: (deck) => dispatch(addDeck(deck)),
+    addDeck: (deckTitle) => dispatch(addDeck(deckTitle)),
     goBack: () => navigation.goBack()
   }
 }

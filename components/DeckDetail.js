@@ -34,15 +34,25 @@ class DeckDetail extends React.Component {
       <View style={styles.deck}>
         <Deck deck={deck} />
         <View style={styles.box}>        
-          <TextButton style={styles.addButton} onPress={this.addCard}>
+          <TextButton style={styles.addButton} onPress={() => this.addCard()}>
             Add Card
           </TextButton>
         </View>
-        <View style={styles.box}>   
-          <TextButton style={styles.startButton} onPress={this.startQuiz}>
+        { deck.questions.length > 0 ? (
+          <View style={styles.box}>   
+          <TextButton style={styles.startButton} onPress={() => this.startQuiz()}>
             Start Quiz
           </TextButton>
         </View>
+
+          ) : (
+            <View style={styles.box}>   
+            <Text>
+              Add some cards to Start Quiz
+            </Text>
+            </View>
+          )
+        }
       </View>
     );
   }
@@ -88,7 +98,7 @@ function mapStateToProps (state, { navigation }) {
   return {
     navigation,
     deckId,
-    deck: state.decks.filter(d => d.id === deckId)[0],
+    deck: state.decks[deckId],
   }
 }
 

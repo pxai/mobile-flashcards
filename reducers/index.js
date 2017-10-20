@@ -6,37 +6,35 @@ const initialDecksState = {
 };
 
 function decks (state = initialDecksState, action) {
+
   switch (action.type) {
     case GET_DECKS:
     console.log('Getting decks: ', action.decks.json());
       return {
         ...state,
-        ...action.decks.json(),
+        ...action.decks,
       }
     case ADD_DECK :
-    console.log('Reducer> Adding deck: []]]', action.deck);
-      return {
-        ...state,
-        decks: [...state.decks, action.deck]
-      }
-      case ADD_CARD :
-      console.log('Reducer> Adding card: []', action.deckId, action.card);
-      return { 
-        decks: state.decks.map( (elem) => {
-          if(elem.id !== action.deckId) {
-              // This isn't the item we care about - keep it as-is
-              return elem;
+      console.log('Reducer> Adding deck: []]]', action.deckTitle);
+        return { decks: {
+          ...state.decks,
+          [action.deckTitle]: {
+            title: action.deckTitle,
+            questions: [],
           }
-          
-          // Otherwise, this is the one we want - return an updated value 
-          // questions: elem.questions.push(action.card)
-          return {
-              ...elem,
-              questions: [...elem.questions, action.card]
-          };    
-        })
+        }
       }
-
+    case ADD_CARD :
+      console.log('Reducer> Adding card: []', action.deckId, action.card);
+      console.log('STATE IS: ', state.decks[action.deckId])
+      return {  decks: {
+          ...state.decks,
+          [action.deckId] : {
+            title: action.deckId,
+            questions: [action.card, ...state.decks[action.deckId].questions]
+          }
+        }
+      }
     default :
       return state
   }

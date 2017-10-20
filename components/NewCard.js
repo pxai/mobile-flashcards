@@ -14,11 +14,10 @@ class NewCard extends React.Component {
     
         let newCard = {
           question: this.state.question,
-          answer: this.state.answer,
-          correct: null
+          answer: this.state.answer
         };
         console.log('Adding card', newCard);
-        this.props.addCard( this.props.deck.id , newCard);
+        this.props.addCard( this.props.deckId , newCard);
 
         this.props.goBack(); 
       };
@@ -46,7 +45,7 @@ class NewCard extends React.Component {
       <View style={styles.box}>
       <TextButton style={styles.default} 
       onPress={this.addCard}>
-          Add Deck
+          Add Card
       </TextButton>
       </View>
 
@@ -81,7 +80,7 @@ function mapStateToProps (state, { navigation }) {
 
   return {
     deckId,
-    deck:  state.decks.filter(d => d.id === deckId)[0],
+    deck:  state.decks[deckId],
   }
 }
 
