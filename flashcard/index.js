@@ -2,33 +2,36 @@ import { AsyncStorage } from 'react-native'
 import data from '../components/data'
 
 export const DECKS_STORAGE_KEY = '@UdaciCards:deck'
-/*try {
- AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data)).then(console.log('Async storage READY!'));
- 
-} catch (error) {0
-  console.log('Could not set AsyncStorage: ', error);
-}*/
+
 
 const DeckStorage = function () {
 
  this.getDecks = function () {
-    return AsyncStorage.getItem(DECKS_STORAGE_KEY);
+    return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then(decks => JSON.parse(decks))
+  }
+
+  this.getDeck = function (id) {
+    return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then((decks) => {
+      return JSON.parse(decks[id])
+    })
   }
   
- this.addDeck = function ({ key, entry }) {
-   console.log('API> Action add key and deck', key, entry);
-  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
-   [key]: entry
-  }));
+  this.saveDeckTitle = function (id) {
+    return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
+      [id]: { title: id, questions: [] }
+    }))
+  };
 
-      /* AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(deck),  () => { 
-            AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck), () => { 
-                AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => { console.log(result); }); 
-              }); 
-          });
-        */  
-          return deck;
- }
+  this.addCardToDeck = function(id, question) {
+    return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+      .then((result) => {
+        const decks = JSON.parse(result);
+        decks[id].questions.push(question);
+        AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks))
+      })
+  };
 
  this.initStorage = function () {
   console.log('Init local storage');

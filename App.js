@@ -11,7 +11,7 @@ import NewCard from './components/NewCard'
 import StartQuiz from './components/StartQuiz'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import thunk from 'redux-thunk';
-import setReminderNotification from './notifications'
+import {setReminderNotification} from './notifications'
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -57,7 +57,7 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
   componentDidMount() {
-    //setReminderNotification()
+    setReminderNotification()
   }
 
   render() {

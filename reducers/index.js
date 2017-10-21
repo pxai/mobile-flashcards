@@ -19,7 +19,7 @@ function decks (state = initialDecksState, action) {
         ...action.decks,
       }
     case ADD_DECK :
-     DeckStorage.addDeck({key: action.deckTitle, entry: {title: action.deckTitle, questions: []}});
+     DeckStorage.saveDeckTitle(action.deckTitle);
       console.log('Reducer> Adding deck: []]]', action.deckTitle);
         return { decks: {
           ...state.decks,
@@ -30,8 +30,8 @@ function decks (state = initialDecksState, action) {
         }
       }
     case ADD_CARD :
+    DeckStorage.addCardToDeck(action.deckId, action.card);
       console.log('Reducer> Adding card: []', action.deckId, action.card);
-      console.log('STATE IS: ', state.decks[action.deckId])
       return {  decks: {
           ...state.decks,
           [action.deckId] : {

@@ -3,6 +3,13 @@ import { AsyncStorage } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 const DECKS_NOTIFICATION_KEY = '@UdaciCards:deckNotification'
 
+
+export function getDailyReminderValue () {
+  return {
+    today: "👋 Don't forget to practice your flashcards today!"
+  }
+}
+
 function createReminderNotification () {
   return {
     title: 'Hey you!',
@@ -18,6 +25,12 @@ function createReminderNotification () {
     }
   }
 }
+
+export function clearLocalNotification () {
+  return AsyncStorage.removeItem(DECKS_NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
+}
+
 
 export function setReminderNotification () {
   AsyncStorage.getItem(DECKS_NOTIFICATION_KEY)
